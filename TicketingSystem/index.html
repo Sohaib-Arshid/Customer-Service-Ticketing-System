@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Customer Service Ticketing System (DSA Project)</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="container">
+        <header>
+            <h1>Customer Service Ticketing System</h1>
+            <p>DSA Final Project - Data Structures Implementation</p>
+        </header>
+
+        <!-- MODULE 1: TICKET CREATION -->
+        <section class="module-panel" id="module-1">
+            <div class="module-header">
+                <h2>📌 Module 1: Ticket Creation</h2>
+                <span class="module-desc">Generate ID, Type, Priority</span>
+            </div>
+            <div class="control-panel">
+                <input type="text" id="customer-name" placeholder="Enter Customer Name" required>
+
+                <label for="ticket-type">Type:</label>
+                <select id="ticket-type">
+                    <option value="Normal">Normal (Queue)</option>
+                    <option value="VIP">VIP (Circular Queue)</option>
+                </select>
+
+                <label for="priority">Priority:</label>
+                <select id="priority">
+                    <option value="1">Low</option>
+                    <option value="2" selected>Medium</option>
+                    <option value="3">High</option>
+                </select>
+
+                <button onclick="createTicket()" class="btn-primary">Generate Ticket</button>
+            </div>
+        </section>
+
+        <div class="grid-display">
+            <!-- MODULE 2: TICKET SERVING (QUEUES) -->
+            <div class="col-left">
+                <section class="module-panel" id="module-2">
+                    <div class="module-header">
+                        <h2>📌 Module 2: Ticket Serving</h2>
+                        <span class="module-desc">Priority: VIP (Circular) > Normal (Queue)</span>
+                    </div>
+
+                    <div class="queue-box">
+                        <h3>VIP Queue (Circular)</h3>
+                        <div id="vip-queue-display" class="visual-queue horizontal">
+                            <div class="empty-placeholder">Empty</div>
+                        </div>
+                    </div>
+
+                    <div class="queue-box">
+                        <h3>Normal Queue (FIFO)</h3>
+                        <div id="normal-queue-display" class="visual-queue horizontal">
+                            <div class="empty-placeholder">Empty</div>
+                        </div>
+                    </div>
+
+                    <div class="action-bar">
+                        <button onclick="serveTicket()" class="btn-success big-btn">Serve Next Ticket</button>
+                    </div>
+                </section>
+            </div>
+
+            <!-- MODULE 3: RESOLUTION & UNDO (STACK) -->
+            <div class="col-right">
+                <section class="module-panel" id="module-3">
+                    <div class="module-header">
+                        <h2>📌 Module 3: Resolution (Stack)</h2>
+                        <span class="module-desc">LIFO: Last Served is Top</span>
+                    </div>
+
+                    <div class="stack-box">
+                        <div id="resolved-stack-display" class="visual-stack vertical">
+                            <div class="empty-placeholder">Stack Empty</div>
+                        </div>
+                    </div>
+
+                    <div class="action-bar">
+                        <button onclick="undoResolve()" class="btn-danger">Undo Last Resolve</button>
+                    </div>
+                </section>
+            </div>
+        </div>
+
+        <!-- MODULE 4: ADMIN DASHBOARD (Sorting) -->
+        <section class="module-panel" id="module-4">
+            <div class="module-header">
+                <h2>📌 Module 4: Admin Dashboard</h2>
+                <span class="module-desc">Use Sorting Algorithms to Optimize System Performance</span>
+            </div>
+
+            <div class="grid-display">
+                <!-- Tool 1: Queue Optimizer -->
+                <div class="col-left">
+                    <div class="control-panel" style="background: #e3f2fd; border: 1px solid #90caf9;">
+                        <h3>🚀 Queue Optimizer</h3>
+                        <p style="font-size: 0.9rem; margin-bottom: 10px;">Re-order the <strong>Pending Queue</strong>
+                            so high priority customers are served next.</p>
+
+                        <label>Sort By:</label>
+                        <select id="opt-criteria">
+                            <option value="priority">Priority (High → Low)</option>
+                            <option value="name">Name (A → Z)</option>
+                        </select>
+
+                        <label>Algorithm:</label>
+                        <select id="opt-algo">
+                            <option value="bubble">Bubble Sort</option>
+                            <option value="insertion">Insertion Sort</option>
+                        </select>
+
+                        <button onclick="optimizeQueue()" class="btn-primary big-btn" style="margin-top: 10px;">Optimize
+                            Queue Now</button>
+                    </div>
+                </div>
+
+                <!-- Tool 2: History Organizer -->
+                <div class="col-right">
+                    <div class="control-panel" style="background: #f3e5f5; border: 1px solid #ce93d8;">
+                        <h3>📂 History Organizer</h3>
+                        <p style="font-size: 0.9rem; margin-bottom: 10px;">Sort the <strong>Resolved Stack</strong> for
+                            auditing.</p>
+
+                        <label>Sort By:</label>
+                        <select id="hist-criteria">
+                            <option value="id">Ticket ID</option>
+                            <option value="name">Name</option>
+                        </select>
+
+                        <label>Algorithm:</label>
+                        <select id="hist-algo">
+                            <option value="selection">Selection Sort</option>
+                            <option value="bubble">Bubble Sort</option>
+                            <option value="insertion">Insertion Sort</option>
+                        </select>
+
+                        <button onclick="organizeHistory()" class="btn-info big-btn" style="margin-top: 10px;">Organize
+                            Records</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- MODULE 5: REPORTING (Implicit in views above) -->
+        <!-- MODULE 6: FUTURE EXPANSION -->
+        <footer class="module-panel" id="module-6">
+            <h3>📌 Module 6: Future Expansion</h3>
+            <p>This system is designed to be expandable for future DSA topics including:</p>
+            <ul style="list-style-type: none; padding: 0;">
+                <li>✓ Linked Lists (for ticket chaining)</li>
+                <li>✓ Trees (for hierarchical category organization)</li>
+                <li>✓ Graphs (for workflow dependencies)</li>
+            </ul>
+        </footer>
+
+    </div>
+    <script src="script.js"></script>
+</body>
+
+</html>

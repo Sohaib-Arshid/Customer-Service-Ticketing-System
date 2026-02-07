@@ -1,0 +1,226 @@
+:root {
+    --primary: #2196F3;
+    --secondary: #FF9800;
+    --success: #4CAF50;
+    --danger: #F44336;
+    --dark: #333;
+    --light: #f4f4f4;
+    --border: #ddd;
+}
+
+body {
+    font-family: 'Segoe UI', sans-serif;
+    background: #eef2f5;
+    color: var(--dark);
+    margin: 0;
+    padding: 20px;
+}
+
+.container {
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+/* Module Panels */
+.module-panel {
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.module-header {
+    border-bottom: 2px solid #eee;
+    margin-bottom: 15px;
+    padding-bottom: 10px;
+}
+
+.module-header h2 {
+    margin: 0;
+    font-size: 1.2rem;
+    color: var(--primary);
+}
+
+.module-desc {
+    font-size: 0.9rem;
+    color: #666;
+}
+
+/* Controls */
+.control-panel,
+.sorting-controls {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    flex-wrap: wrap;
+    background: #f9f9f9;
+    padding: 15px;
+    border-radius: 6px;
+}
+
+input,
+select,
+button {
+    padding: 8px 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+button {
+    cursor: pointer;
+    font-weight: bold;
+    color: white;
+    border: none;
+}
+
+.btn-primary {
+    background: var(--primary);
+}
+
+.btn-success {
+    background: var(--success);
+}
+
+.btn-danger {
+    background: var(--danger);
+}
+
+.btn-info {
+    background: #607D8B;
+}
+
+.big-btn {
+    width: 100%;
+    padding: 12px;
+    font-size: 1.1rem;
+}
+
+/* Grid Layout */
+.grid-display {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    /* Queue section wider than Stack */
+    gap: 20px;
+}
+
+@media (max-width: 768px) {
+    .grid-display {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Visual Queues (Horizontal) */
+.queue-box {
+    margin-bottom: 20px;
+}
+
+.visual-queue {
+    display: flex;
+    gap: 10px;
+    overflow-x: auto;
+    padding: 10px;
+    background: #fafafa;
+    border: 1px dashed #ccc;
+    min-height: 80px;
+    align-items: center;
+}
+
+/* Visual Stack (Vertical) */
+.stack-box {
+    background: #fafafa;
+    border: 1px solid #ccc;
+    border-bottom: 4px solid #999;
+    /* Base of stack */
+    padding: 10px;
+    min-height: 300px;
+    display: flex;
+    justify-content: center;
+}
+
+.visual-stack {
+    display: flex;
+    flex-direction: column-reverse;
+    /* Items stack from bottom up */
+    gap: 5px;
+    width: 100%;
+}
+
+/* Ticket Cards */
+.ticket {
+    background: white;
+    border: 1px solid #ccc;
+    padding: 8px;
+    border-radius: 4px;
+    min-width: 120px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    font-size: 0.9rem;
+    position: relative;
+    animation: popIn 0.3s ease;
+}
+
+@keyframes popIn {
+    from {
+        transform: scale(0.8);
+        opacity: 0;
+    }
+
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+.ticket.vip {
+    border-left: 5px solid var(--secondary);
+    background: #fff8e1;
+}
+
+.ticket.normal {
+    border-left: 5px solid var(--primary);
+}
+
+.ticket.resolved {
+    border-left: 5px solid var(--success);
+    background: #e8f5e9;
+    opacity: 0.9;
+}
+
+.ticket-id {
+    font-weight: bold;
+    display: block;
+    margin-bottom: 4px;
+}
+
+.ticket-meta {
+    font-size: 0.8rem;
+    color: #666;
+}
+
+/* Sorting Output */
+.sorting-result-box {
+    margin-top: 15px;
+    padding: 15px;
+    background: #fff;
+    border: 1px solid #eee;
+    min-height: 100px;
+}
+
+.sorted-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.empty-placeholder {
+    color: #aaa;
+    font-style: italic;
+    width: 100%;
+    text-align: center;
+}
